@@ -5,24 +5,24 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
-        <link rel="stylesheet" href="{{ asset('css/app.css  ') }}">
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     </head>
 
     <body>
         <header class="entete">
-            <title> @yield('titre', 'Accueil') </title>
+            <title>@yield('titre')</title>
             <h1>Le Bestiaire</h1>
+            <img>
             <nav>
-                <span class="logo">Le Bestiaire</span>
-                <button><a href="{{ url('/dashboard') }}">Accueil</a></button>
-                <button><a href="{{ url('/creatures') }}">Créatures</a></button>
-                <button><a href="{{ url('/creatures/create') }}">Ajouter</a></button>
+                <button><a href="{{ route('accueil') }}">Accueil</a></button>
+                <button><a href="{{ route('creature.index') }}">Créature</a></button>
+                <button><a href="{{ url('/creature/create') }}">Ajouter</a></button>
             </nav>
         </header>
 
-        <main>
+
             @yield('contenu')
-        </main>
+
     </body>
 
     <footer class="pied">

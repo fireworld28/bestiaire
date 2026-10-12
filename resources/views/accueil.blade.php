@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-<!DOCTYPE html>
-    <html>
-    @section('titre')
-    @section('contenu')
-    </html>
+@section('titre',"acceuil")
+@section('contenu')
+    <p>Bienvenue sur le site du caca méchant !</p>
+@endsection
