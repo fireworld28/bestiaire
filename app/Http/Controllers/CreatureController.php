@@ -24,22 +24,28 @@ class CreatureController extends Controller
 
     }
 
+    public function create(creature $creature) {
+
+    return view('creature.create', ['creature' => $creature], ['type' => creature::TYPES]);
+
+    }
+
     public function store(Request $request) {
 
         $donnees = $this->valider($request);
-        $joueur = Joueur::create($donnees);
-        return redirect()->route('joueurs.show', $joueur)->with('succes', "Le joueur {$joueur->pseudo} a été ajouté !");
+        $creature = creature::create($donnees);
+        return redirect()->route('creature.show', $creature)->with('succes', "La créature {$creature->nom} a été ajouté !");
 
     }
 
     private function valider(Request $request): array {
 
     return $request->validate([
-    'pseudo' => ['required', 'string', 'max:30'],
-    'classe' => ['required', Rule::in(Joueur::CLASSES)],
-    'niveau' => ['required', 'integer', 'min:1'],
-    'bio'
-    => ['nullable', 'string', 'max:500'],
+    'nom' => ['required', 'string', 'max:30'],
+    'type' => ['required', Rule::in(creature::TYPES)],
+    'points_de_vie' => ['required', 'integer', 'min:1'],
+    'attaque' => ['required', 'integer', 'min:1'],
+    'description' => ['nullable', 'string', 'max:1000'],
     ], [
     'required' => 'Le champ :attribute est obligatoire.',
     // ... un message par règle utilisée

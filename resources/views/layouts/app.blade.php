@@ -16,17 +16,21 @@
             <nav>
                 <button><a href="{{ route('accueil') }}">Accueil</a></button>
                 <button><a href="{{ route('creature.index') }}">Créature</a></button>
-                <button><a href="{{ url('/creature/create') }}">Ajouter</a></button>
+                <button><a href="{{ route('creature.create') }}">Ajouter</a></button>
             </nav>
+            @if (session('cle'))
+                <div class="alerte alerte-succes">{{ session('cle') }}</div>
+            @endif
         </header>
 
-
+        <main>
             @yield('contenu')
+        </main>
 
+        <footer class="pied">
+            BTS SIO SLAM- TP Laravel
+        </footer>
     </body>
 
-    <footer class="pied">
-        BTS SIO SLAM- TP Laravel
-    </footer>
 
 </html>
